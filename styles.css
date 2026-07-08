@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Sapphire";
-  src: url("/api/font/sapphire.woff") format("woff");
+  src: url("https://d39zum0jwvcigt.cloudfront.net/fonts/YDISapphIIM-c7a72646171370a8020e6a76044ab93a3749678fe4beba6dc42f193b28ef4fc6c327609f314bde73267ba4cf7fe338ed7e525d72194fd20f13216bfc6df02e5a.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "Belwe Bold";
-  src: url("/api/font/belwe-bold.woff") format("woff");
+  src: url("https://d39zum0jwvcigt.cloudfront.net/fonts/Belwe-Bold-9a6521fdfa97c59b38cf872354f166fb40b3c89d1026766795dde6540c536f34f3b30fd0fad9039d9457f80e5136d28400a3c1f5b2a73ecbd931b03d0fbfb840.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

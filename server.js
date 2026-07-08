@@ -15,12 +15,6 @@ loadDotEnv();
 const port = Number(process.env.PORT || 5173);
 const clientId = process.env.BLIZZARD_CLIENT_ID;
 const clientSecret = process.env.BLIZZARD_CLIENT_SECRET;
-const officialFontUrls = {
-  "sapphire.woff":
-    "https://d39zum0jwvcigt.cloudfront.net/fonts/YDISapphIIM-c7a72646171370a8020e6a76044ab93a3749678fe4beba6dc42f193b28ef4fc6c327609f314bde73267ba4cf7fe338ed7e525d72194fd20f13216bfc6df02e5a.woff",
-  "belwe-bold.woff":
-    "https://d39zum0jwvcigt.cloudfront.net/fonts/Belwe-Bold-9a6521fdfa97c59b38cf872354f166fb40b3c89d1026766795dde6540c536f34f3b30fd0fad9039d9457f80e5136d28400a3c1f5b2a73ecbd931b03d0fbfb840.woff",
-};
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -690,35 +684,6 @@ async function fetchImage(request, response) {
   }
 }
 
-async function fetchFont(request, response) {
-  try {
-    const requestUrl = new URL(request.url, `http://${request.headers.host}`);
-    const fontName = requestUrl.pathname.replace("/api/font/", "");
-    const fontUrl = officialFontUrls[fontName];
-
-    if (!fontUrl) {
-      apiError(response, 404, "Font not found");
-      return;
-    }
-
-    const fontResponse = await fetch(fontUrl, { headers: { "User-Agent": "Mozilla/5.0" } });
-    if (!fontResponse.ok) {
-      apiError(response, fontResponse.status, "Font request failed");
-      return;
-    }
-
-    const buffer = Buffer.from(await fontResponse.arrayBuffer());
-    response.writeHead(200, {
-      "Content-Type": "font/woff",
-      "Cache-Control": "public, max-age=31536000, immutable",
-      "Access-Control-Allow-Origin": "*",
-    });
-    response.end(request.method === "HEAD" ? undefined : buffer);
-  } catch (error) {
-    apiError(response, 500, error.message);
-  }
-}
-
 async function serveStatic(request, response) {
   const requestUrl = new URL(request.url, `http://${request.headers.host}`);
   const pathname = requestUrl.pathname === "/" ? "/index.html" : decodeURIComponent(requestUrl.pathname);
@@ -778,11 +743,6 @@ createServer((request, response) => {
 
   if (request.url.startsWith("/api/image")) {
     fetchImage(request, response);
-    return;
-  }
-
-  if (request.url.startsWith("/api/font")) {
-    fetchFont(request, response);
     return;
   }
 
