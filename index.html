@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>하스 덱 백업함</title>
+    <link rel="stylesheet" href="/styles.css?v=official-deck-fonts-1" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Hearthstone Deck Vault</p>
+        <h1>하스 덱 백업함</h1>
+      </div>
+    </header>
+
+    <main id="appShell" class="app-shell card-set-page">
+      <section class="panel builder-panel builder-controls-panel" aria-label="덱 빌더">
+        <div class="panel-head">
+          <div>
+            <p id="pageEyebrow" class="eyebrow">Card Set</p>
+            <h2 id="pageTitle">카드 세트</h2>
+          </div>
+          <div class="panel-actions">
+            <span id="deckSize" class="pill deck-only">0 / 30</span>
+            <button id="deckBuildToggle" class="primary-button build-toggle-button" type="button">덱 만들기</button>
+          </div>
+        </div>
+
+        <div class="builder-control-row">
+          <div class="builder-primary-row">
+            <div class="mode-toggle" aria-label="덱 모드">
+              <button class="mode-button is-active" type="button" data-mode="standard" aria-pressed="true">정규전</button>
+              <button class="mode-button" type="button" data-mode="wild" aria-pressed="false">야생</button>
+            </div>
+            <select id="deckClass" class="deck-only" aria-label="덱 직업">
+              <option value="">직업 선택</option>
+            </select>
+            <button id="syncDbButton" class="ghost-button compact-button" type="button">DB 최신화</button>
+          </div>
+          <div class="deck-code-row deck-only">
+            <input id="deckCodeInput" class="deck-only" type="text" placeholder="하스스톤 덱 코드 붙여넣기" />
+            <button id="loadDeckCodeButton" class="ghost-button deck-only" type="button">불러오기</button>
+          </div>
+        </div>
+        <div id="deckCodeStatus" class="sync-status deck-only" aria-live="polite"></div>
+      </section>
+
+      <section class="cards-panel" aria-label="카드 검색">
+        <div class="search-block">
+          <div class="filters">
+            <input id="cardSearch" type="search" placeholder="카드 이름 검색" />
+            <button id="detailSearchToggle" class="ghost-button icon-button" type="button" aria-label="추가설정" aria-controls="detailSearchPanel" aria-expanded="false">+</button>
+          </div>
+          <div id="detailSearchPanel" class="detail-search-panel" hidden>
+            <input id="detailSearch" type="search" placeholder="카드 설명, 주문 속성, 하수인 타입, 확장팩 검색" />
+          </div>
+          <div id="activeFilterChips" class="active-filter-chips" hidden></div>
+          <select id="classFilter" hidden aria-hidden="true">
+            <option value="all">전체 직업</option>
+          </select>
+
+          <div class="sync-bar" aria-live="polite">
+            <span id="syncStatus" class="sync-status">카드 DB 불러오는 중...</span>
+          </div>
+        </div>
+
+        <div class="card-list-shell">
+          <div id="cardLoading" class="card-loading" hidden aria-label="카드 DB 불러오는 중">
+            <span class="loading-ring" aria-hidden="true"></span>
+          </div>
+          <div id="cardList" class="card-list"></div>
+        </div>
+      </section>
+
+      <section class="panel current-deck-panel" aria-label="현재 덱">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Current Deck</p>
+            <h2>현재 덱</h2>
+          </div>
+        </div>
+
+        <div id="deckList" class="deck-list empty-state">카드를 추가하면 여기 덱 리스트가 쌓입니다.</div>
+
+        <div class="builder-actions">
+          <button id="clearDeckButton" class="ghost-button" type="button">비우기</button>
+          <button id="exportPngButton" class="primary-button" type="button">PNG 저장</button>
+        </div>
+      </section>
+    </main>
+
+    <template id="cardTemplate">
+      <button class="card-row" type="button">
+        <span class="mana"></span>
+        <span class="art-frame">
+          <img class="card-art" alt="" loading="lazy" />
+        </span>
+        <span class="card-copy"></span>
+        <span class="card-main">
+          <strong></strong>
+          <small></small>
+        </span>
+        <span class="rarity-dot"></span>
+      </button>
+    </template>
+
+    <div id="cardPreview" class="card-preview-popover" aria-hidden="true">
+      <img id="cardPreviewImage" alt="" />
+    </div>
+
+    <div id="cardDetailModal" class="card-detail-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cardDetailName">
+      <div class="card-detail-backdrop" data-close-card-detail></div>
+      <div class="card-detail-panel">
+        <button id="cardDetailClose" class="card-detail-close" type="button" aria-label="닫기">×</button>
+        <div class="card-detail-image-frame">
+          <img id="cardDetailImage" alt="" />
+        </div>
+        <div class="card-detail-content">
+          <h2 id="cardDetailName"></h2>
+          <p id="cardDetailFlavor" class="card-detail-flavor"></p>
+          <div class="card-detail-info-panel">
+            <div class="card-detail-meta-row">
+              <button id="addPatchButton" class="primary-button compact-button" type="button">설정 추가</button>
+            </div>
+            <section class="card-patch-section" aria-label="패치내역">
+              <div id="cardPatchList" class="card-patch-list"></div>
+              <form id="cardPatchForm" class="card-patch-form" hidden>
+                <input id="cardPatchDate" type="text" placeholder="YYYY-MM-DD" aria-label="패치 날짜" />
+                <textarea id="cardPatchText" rows="3" placeholder="패치내역 입력"></textarea>
+                <div class="card-patch-form-actions">
+                  <button id="cancelPatchButton" class="ghost-button" type="button">취소</button>
+                  <button id="submitPatchButton" class="primary-button" type="submit">저장</button>
+                </div>
+              </form>
+              <p id="cardPatchStatus" class="card-patch-status" aria-live="polite"></p>
+            </section>
+          </div>
+          <div class="card-detail-actions">
+            <button id="saveCardImageButton" class="ghost-button" type="button">카드 이미지 저장</button>
+            <button id="modalDeckBuilderButton" class="primary-button" type="button">덱 만들기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/app.js?v=deck-rightclick-low-outline-1"></script>
+  </body>
+</html>

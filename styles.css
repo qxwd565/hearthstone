@@ -1,0 +1,2177 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+@font-face {
+  font-family: "Sapphire";
+  src: url("/api/font/sapphire.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Belwe Bold";
+  src: url("/api/font/belwe-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-ui: "Pretendard Variable", Pretendard, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-deck-name: "Sapphire", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  --font-deck-cost: "Belwe Bold", Georgia, "Times New Roman", serif;
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #f1f3f6;
+  --line: #d8dde5;
+  --text: #111827;
+  --muted: #6b7280;
+  --gold: #8a6a18;
+  --blue: #2563eb;
+  --green: #5ca56a;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --button-positive: #111827;
+  --button-positive-hover: #000000;
+  --button-negative: #dc2626;
+  --button-negative-hover: #b91c1c;
+  --control-height: 40px;
+  --control-height-sm: 32px;
+  --control-height-lg: 48px;
+  --radius-panel: 14px;
+  --shadow: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-ui);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 17, 22, 0.86);
+  backdrop-filter: blur(16px);
+}
+
+.topbar h1,
+.panel h2 {
+  margin: 0;
+}
+
+.topbar h1 {
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.builder-actions,
+.filters,
+.deck-form,
+.deck-code-form,
+.sync-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) 290px;
+  gap: 18px;
+  width: min(100% - 36px, 1360px);
+  margin: 18px auto;
+}
+
+.app-shell.card-set-page {
+  grid-template-columns: 1fr;
+}
+
+.panel {
+  min-height: calc(100vh - 112px);
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 8px;
+  background: rgba(26, 29, 36, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.builder-controls-panel {
+  grid-column: 1 / -1;
+  min-height: auto;
+}
+
+.card-set-page .current-deck-panel,
+.card-set-page .deck-only {
+  display: none;
+}
+
+.card-set-page .cards-panel {
+  grid-column: 1 / -1;
+}
+
+.cards-panel,
+.current-deck-panel {
+  min-height: calc(100vh - 278px);
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill {
+  min-width: 58px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+input,
+select,
+textarea {
+  min-width: 0;
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  background: #12151b;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 82px;
+  line-height: 1.5;
+}
+
+.filters {
+  margin-bottom: 10px;
+}
+
+.filters #cardSearch,
+.filters #detailSearch {
+  flex: 1 1 220px;
+}
+
+.active-filter-chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 0 10px;
+}
+
+.active-filter-chips[hidden] {
+  display: none;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px 7px 12px;
+  border: 1px solid rgba(229, 174, 61, 0.5);
+  border-radius: 999px;
+  color: var(--gold);
+  background: rgba(229, 174, 61, 0.1);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.active-filter-chip button {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.sync-bar {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.sync-bar select {
+  max-width: 118px;
+}
+
+.sync-status {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card-list-shell {
+  position: relative;
+  min-height: 360px;
+}
+
+.card-list,
+.deck-list,
+.saved-decks {
+  display: grid;
+  gap: 8px;
+}
+
+.card-list {
+  grid-template-columns: repeat(auto-fill, 118px);
+  justify-content: start;
+  align-items: start;
+  max-height: calc(100vh - 350px);
+  min-height: 360px;
+  overflow: auto;
+  padding: 2px 4px 2px 2px;
+}
+
+.card-list.is-loading {
+  pointer-events: none;
+  opacity: 0.34;
+}
+
+.card-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(225, 186, 96, 0.24);
+  border-radius: 8px;
+  background: rgba(5, 8, 13, 0.78);
+  box-shadow: none;
+  backdrop-filter: blur(2px);
+}
+
+.card-loading[hidden] {
+  display: none;
+}
+
+.loading-ring {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgba(225, 186, 96, 0.22);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: loading-spin 0.9s linear infinite;
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card-row {
+  display: block;
+  width: 118px;
+  aspect-ratio: 367 / 512;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: var(--text);
+  background: transparent;
+  text-align: left;
+}
+
+.card-row:hover {
+  background: transparent;
+}
+
+.card-set-page .card-row {
+  cursor: zoom-in;
+}
+
+.card-row:disabled,
+.card-row.is-unavailable {
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+  opacity: 0.42;
+}
+
+.card-row.is-unavailable {
+  cursor: pointer;
+}
+
+.mana {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #06131f;
+  background: radial-gradient(circle at 35% 30%, #d7f3ff, #3e9bd0 62%, #166396);
+  font-weight: 900;
+}
+
+.art-frame {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 367 / 512;
+  height: auto;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.card-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+}
+
+.art-frame.no-art .card-art,
+.card-art:not([src]) {
+  display: none;
+}
+
+.card-preview-popover {
+  position: fixed;
+  z-index: 30;
+  top: var(--preview-y, -9999px);
+  left: var(--preview-x, -9999px);
+  width: min(300px, calc(100vw - 24px));
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.card-preview-popover.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.card-preview-popover img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 24px);
+  object-fit: contain;
+  filter: none;
+}
+
+.card-detail-modal[hidden] {
+  display: none;
+}
+
+.card-detail-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+body.has-card-modal {
+  overflow: hidden;
+}
+
+.card-detail-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 5, 9, 0.78);
+  backdrop-filter: blur(3px);
+}
+
+.card-detail-panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(230px, 300px) minmax(320px, 520px);
+  gap: 28px;
+  max-width: min(900px, calc(100vw - 40px));
+  max-height: min(760px, calc(100vh - 40px));
+  overflow: auto;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: #151820;
+  box-shadow: none;
+}
+
+.card-detail-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.26);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.card-detail-image-frame {
+  display: grid;
+  align-items: start;
+  justify-items: center;
+}
+
+.card-detail-image-frame img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 120px);
+  object-fit: contain;
+  filter: none;
+}
+
+.card-detail-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.card-detail-content h2 {
+  margin: 0 40px 10px 0;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.card-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  margin-right: auto;
+}
+
+.card-detail-tag {
+  width: auto;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid #b8c2d1;
+  border-radius: 999px;
+  color: #253044;
+  background: #eef2f7;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.card-detail-tag:hover:not(:disabled),
+.card-detail-tag:focus-visible {
+  border-color: #4f88d9;
+  color: #0d4f9b;
+  background: #e7f0ff;
+}
+
+.card-detail-tag:disabled {
+  display: none;
+  cursor: default;
+  opacity: 0.55;
+}
+
+.card-detail-flavor {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.card-detail-info-panel {
+  display: grid;
+  min-height: 0;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #d9dee7;
+  border-radius: 14px;
+  color: #1d2430;
+  background: linear-gradient(180deg, #ffffff, #f5f7fa);
+  box-shadow: none;
+}
+
+.card-detail-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.card-detail-artist {
+  width: auto;
+}
+
+.card-patch-section {
+  display: grid;
+  min-height: 0;
+  margin-top: 0;
+}
+
+.card-patch-head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.card-patch-list {
+  display: grid;
+  gap: 8px;
+  max-height: 180px;
+  overflow: auto;
+  padding-right: 4px;
+  color: #1d2430;
+}
+
+.card-patch-entry,
+.empty-patch-history {
+  margin: 0;
+  padding: 11px 12px;
+  border: 1px solid #dde3ec;
+  border-radius: 12px;
+  background: #f0f3f7;
+}
+
+.card-patch-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: start;
+}
+
+.card-release-entry {
+  grid-template-columns: 1fr;
+}
+
+.patch-set-link {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--button-positive);
+  background: transparent;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.patch-set-link:hover,
+.patch-set-link:focus-visible {
+  color: #000000;
+  background: transparent;
+}
+
+.patch-entry-actions,
+.patch-edit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.patch-edit-button {
+  width: auto;
+  padding: 6px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.patch-edit-button:hover,
+.patch-edit-button:focus-visible {
+  border-color: #9ca3af;
+  background: var(--surface-2);
+}
+
+.patch-edit-form {
+  display: grid;
+  gap: 8px;
+}
+
+.patch-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #687286;
+  font-size: 12px;
+}
+
+.patch-entry-meta strong {
+  color: #0d4f9b;
+}
+
+.card-patch-entry p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.empty-patch-history {
+  color: #6d7480;
+}
+
+.patch-delete-button {
+  width: auto;
+  padding: 6px 11px;
+  border: 1px solid #ef4444;
+  border-radius: 999px;
+  color: #fff;
+  background: #ef4444;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.patch-delete-button:hover,
+.patch-delete-button:focus-visible {
+  border-color: #dc2626;
+  background: #dc2626;
+}
+
+.card-patch-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.card-patch-form input,
+.card-patch-form textarea {
+  border-color: #cbd5e1;
+  color: #1d2430;
+  background: #ffffff;
+}
+
+.card-patch-form input:focus,
+.card-patch-form textarea:focus {
+  border-color: #4f88d9;
+  box-shadow: 0 0 0 3px rgba(79, 136, 217, 0.16);
+}
+
+.card-patch-form[hidden] {
+  display: none;
+}
+
+.card-patch-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.card-patch-status {
+  min-height: 18px;
+  margin: 8px 0 0;
+  color: #5f6977;
+  font-size: 12px;
+}
+
+.card-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.card-detail-modal.is-editing-patch .card-detail-actions {
+  display: none;
+}
+
+.card-detail-modal .primary-button,
+.card-detail-modal .ghost-button {
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.card-detail-modal .primary-button,
+#saveCardImageButton {
+  border-color: #2563eb;
+  color: #fff;
+  background: #2563eb;
+}
+
+.card-detail-modal .primary-button:hover,
+.card-detail-modal .primary-button:focus-visible,
+#saveCardImageButton:hover,
+#saveCardImageButton:focus-visible {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+}
+
+#addPatchButton {
+  margin-left: auto;
+}
+
+#cancelPatchButton,
+.card-detail-close {
+  border-color: #ef4444;
+  color: #fff;
+  background: #ef4444;
+}
+
+#cancelPatchButton:hover,
+#cancelPatchButton:focus-visible,
+.card-detail-close:hover,
+.card-detail-close:focus-visible {
+  border-color: #dc2626;
+  background: #dc2626;
+}
+
+.card-detail-modal button:disabled {
+  cursor: default;
+  opacity: 0.52;
+}
+
+.card-copy {
+  color: var(--gold);
+  font-weight: 800;
+  text-align: center;
+}
+
+.card-row .mana,
+.card-row .card-copy,
+.card-row .card-main,
+.card-row .rarity-dot {
+  display: none;
+}
+
+.card-main {
+  min-width: 0;
+}
+
+.card-main strong,
+.card-main small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-main small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.rarity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.rarity-dot.rare {
+  background: var(--blue);
+}
+
+.rarity-dot.epic {
+  background: var(--purple);
+}
+
+.rarity-dot.legendary {
+  background: var(--gold);
+}
+
+.deck-form {
+  margin-bottom: 14px;
+}
+
+.deck-form select,
+.builder-control-row select {
+  max-width: 150px;
+}
+
+.builder-control-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.builder-control-row .mode-toggle {
+  order: 0;
+}
+
+.builder-control-row #deckClass {
+  order: 1;
+  flex: 0 0 150px;
+}
+
+.builder-control-row #syncDbButton {
+  order: 2;
+}
+
+.builder-control-row #deckCodeInput {
+  order: 3;
+  flex: 1 1 420px;
+}
+
+.builder-control-row #loadDeckCodeButton {
+  order: 4;
+  flex: 0 0 auto;
+}
+
+.mode-toggle {
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 160px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #12151b;
+}
+
+.mode-button {
+  flex: 1 1 0;
+  min-width: 72px;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 0;
+  color: var(--muted);
+  background: transparent;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.mode-button + .mode-button {
+  border-left: 1px solid var(--line);
+}
+
+.mode-button.is-active {
+  color: #18120a;
+  background: linear-gradient(180deg, #ffd76b, #d79a2b);
+}
+
+.deck-code-form {
+  margin-bottom: 8px;
+}
+
+.deck-code-form button {
+  flex: 0 0 auto;
+}
+
+#deckCodeStatus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.deck-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.deck-stats div {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.deck-stats strong,
+.deck-stats span {
+  display: block;
+}
+
+.deck-stats span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mana-curve {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  align-items: end;
+  gap: 6px;
+  height: 92px;
+  margin-bottom: 14px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.curve-bar {
+  display: grid;
+  align-items: end;
+  gap: 4px;
+  height: 100%;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+.curve-fill {
+  min-height: 4px;
+  border-radius: 3px 3px 0 0;
+  background: var(--gold);
+}
+
+.deck-list {
+  align-content: start;
+  gap: 1px;
+  justify-items: start;
+  max-height: calc(100vh - 350px);
+  min-height: 160px;
+  overflow: auto;
+  margin-bottom: 14px;
+  padding-right: 4px;
+}
+
+.deck-card-entry {
+  display: grid;
+  grid-template-columns: 217px 24px;
+  align-items: center;
+  gap: 6px;
+  width: 247px;
+  min-height: 34px;
+}
+
+.deck-card-row {
+  position: relative;
+  display: block;
+  aspect-ratio: 217 / 34;
+  width: 217px;
+  height: 34px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: url("assets/card-tile-base.png") center / 100% 100% no-repeat;
+}
+
+.deck-card-row.no-art {
+  background: url("assets/card-tile-base.png") center / 100% 100% no-repeat;
+}
+
+.deck-card-row:hover {
+  background: url("assets/card-tile-base.png") center / 100% 100% no-repeat;
+}
+
+.deck-card-row::after,
+.deck-tile-art-slot,
+.deck-tile-art,
+.deck-tile-fade,
+.deck-tile-cost,
+.deck-tile-name {
+  position: absolute;
+}
+
+.deck-card-row::after {
+  content: "";
+  inset: 0;
+  z-index: 2;
+  background: url("assets/card-tile-frame.png") center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.deck-card-row.has-two-copies::after {
+  background-image: url("assets/card-tile-frame-two.png");
+}
+
+.deck-card-row.is-legendary::after {
+  background-image: url("assets/card-tile-frame-legendary.png");
+}
+
+.deck-tile-art-slot {
+  top: 4px;
+  left: 96px;
+  z-index: 0;
+  width: 117px;
+  height: 27px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.deck-card-row.has-two-copies .deck-tile-art-slot,
+.deck-card-row.is-legendary .deck-tile-art-slot {
+  left: 77px;
+}
+
+.deck-tile-art {
+  top: 0;
+  left: 0;
+  width: 117px;
+  height: 27px;
+  object-fit: cover;
+  object-position: center 35%;
+  opacity: 0.95;
+}
+
+.deck-tile-fade {
+  inset: 0;
+  z-index: 1;
+  background: url("assets/card-tile-fade.png") center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.deck-card-row.has-two-copies .deck-tile-fade,
+.deck-card-row.is-legendary .deck-tile-fade {
+  background-image: url("assets/card-tile-fade-two.png");
+}
+
+.deck-tile-cost,
+.deck-tile-name {
+  z-index: 3;
+}
+
+.deck-tile-cost {
+  display: grid;
+  place-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 15.8%;
+  color: #f4fbff;
+  font-family: var(--font-deck-cost);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow:
+    -1px -1px 0 #000,
+    0 -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 0 0 #000,
+    1px 0 0 #000,
+    -1px 1px 0 #000,
+    0 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.deck-tile-name {
+  top: 50%;
+  left: 36px;
+  right: 17.2%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  color: #f7f0df;
+  font-family: "Sapphire", "Pretendard Variable", Pretendard, sans-serif;
+  font-synthesis: none;
+  font-size: 11px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  text-shadow:
+    -1px -1px 0 #000,
+    0 -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 0 0 #000,
+    1px 0 0 #000,
+    -1px 1px 0 #000,
+    0 1px 0 #000,
+    1px 1px 0 #000;
+  white-space: nowrap;
+}
+
+.deck-card-row.has-two-copies .deck-tile-name,
+.deck-card-row.is-legendary .deck-tile-name {
+  right: 28px;
+}
+
+.deck-card-entry .remove-card {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(214, 95, 85, 0.42);
+  border-radius: 50%;
+  color: #ff9a91;
+  background: rgba(90, 16, 14, 0.46);
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0.78;
+}
+
+.deck-card-entry:hover .remove-card,
+.deck-card-entry .remove-card:focus-visible {
+  opacity: 1;
+}
+
+.remove-card {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.remove-card:hover {
+  color: #fff2f0;
+  border-color: var(--red);
+  background: rgba(160, 34, 28, 0.68);
+}
+
+.primary-button,
+.ghost-button,
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.primary-button {
+  border: 1px solid #e4b35b;
+  color: #15110a;
+  background: linear-gradient(#f1c974, #c9932e);
+  font-weight: 800;
+}
+
+.ghost-button,
+.file-button {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.compact-button {
+  flex: 0 0 auto;
+  padding-inline: 12px;
+  white-space: nowrap;
+}
+
+.file-button input {
+  display: none;
+}
+
+.builder-actions {
+  justify-content: flex-end;
+}
+
+.saved-decks {
+  max-height: calc(100vh - 230px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.saved-deck {
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.saved-deck-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.saved-deck h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.saved-deck small {
+  color: var(--muted);
+}
+
+.saved-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.saved-actions button {
+  min-height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.deck-preview {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.empty-state {
+  display: grid;
+  place-items: center;
+  min-height: 120px;
+  border: 1px dashed var(--line);
+  border-radius: 7px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Light design system overrides */
+.topbar {
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: none;
+  backdrop-filter: blur(18px);
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.cards-panel,
+.current-deck-panel,
+.builder-controls-panel {
+  background: var(--surface);
+}
+
+.eyebrow {
+  color: #4b5563;
+}
+
+.pill {
+  border-color: var(--line);
+  color: var(--muted);
+  background: var(--surface-2);
+}
+
+input,
+select,
+textarea {
+  min-height: var(--control-height);
+  border-color: var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  background: #ffffff;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--button-positive);
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
+
+.primary-button,
+.ghost-button,
+.file-button,
+.mode-button {
+  min-height: var(--control-height);
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.primary-button {
+  border: 1px solid var(--button-positive);
+  color: #ffffff;
+  background: var(--button-positive);
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+  border-color: var(--button-positive-hover);
+  background: var(--button-positive-hover);
+}
+
+.ghost-button,
+.file-button {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: #ffffff;
+}
+
+.ghost-button:hover,
+.ghost-button:focus-visible,
+.file-button:hover,
+.file-button:focus-visible {
+  border-color: #9ca3af;
+  background: var(--surface-2);
+}
+
+.compact-button {
+  min-height: var(--control-height-sm);
+  padding-inline: 12px;
+  font-size: 13px;
+}
+
+.builder-control-row,
+.filters,
+.builder-actions,
+.panel-actions {
+  gap: 10px;
+}
+
+.mode-toggle {
+  min-height: var(--control-height);
+  padding: 3px;
+  border-color: var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.mode-button {
+  min-height: calc(var(--control-height) - 6px);
+  padding: 0 16px;
+  color: var(--muted);
+  background: transparent;
+}
+
+.mode-button + .mode-button {
+  border-left: 0;
+}
+
+.mode-button.is-active {
+  color: #ffffff;
+  background: var(--button-positive);
+}
+
+.active-filter-chip,
+.card-detail-tag {
+  border-color: var(--line);
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.card-detail-tag:hover:not(:disabled),
+.card-detail-tag:focus-visible {
+  border-color: #9ca3af;
+  color: var(--text);
+  background: #ffffff;
+}
+
+.active-filter-chip button {
+  color: var(--text);
+  background: #ffffff;
+}
+
+.card-loading {
+  border-color: rgba(17, 24, 39, 0.12);
+  background: rgba(245, 246, 248, 0.82);
+  box-shadow: none;
+}
+
+.loading-ring {
+  border-color: rgba(17, 24, 39, 0.14);
+  border-top-color: var(--button-positive);
+}
+
+.card-row {
+  color: var(--text);
+}
+
+.card-detail-backdrop {
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.card-detail-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  color: var(--text);
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.card-detail-flavor {
+  color: var(--muted);
+}
+
+.card-detail-info-panel {
+  border-color: var(--line);
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.card-patch-entry,
+.empty-patch-history {
+  border-color: var(--line);
+  background: #ffffff;
+}
+
+.card-patch-form input,
+.card-patch-form textarea {
+  border-color: var(--line);
+  color: var(--text);
+  background: #ffffff;
+}
+
+.card-patch-form input:focus,
+.card-patch-form textarea:focus {
+  border-color: var(--button-positive);
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
+
+.card-detail-modal .primary-button,
+#saveCardImageButton {
+  border-color: var(--button-positive);
+  color: #ffffff;
+  background: var(--button-positive);
+}
+
+.card-detail-modal .primary-button:hover,
+.card-detail-modal .primary-button:focus-visible,
+#saveCardImageButton:hover,
+#saveCardImageButton:focus-visible {
+  border-color: var(--button-positive-hover);
+  background: var(--button-positive-hover);
+}
+
+#clearDeckButton,
+#cancelPatchButton,
+.card-detail-close,
+.patch-delete-button,
+.remove-card {
+  border-color: var(--button-negative);
+  color: #ffffff;
+  background: var(--button-negative);
+}
+
+#clearDeckButton:hover,
+#clearDeckButton:focus-visible,
+#cancelPatchButton:hover,
+#cancelPatchButton:focus-visible,
+.card-detail-close:hover,
+.card-detail-close:focus-visible,
+.patch-delete-button:hover,
+.patch-delete-button:focus-visible,
+.remove-card:hover,
+.remove-card:focus-visible {
+  border-color: var(--button-negative-hover);
+  color: #ffffff;
+  background: var(--button-negative-hover);
+}
+
+.card-detail-close,
+.remove-card,
+.deck-card-entry .remove-card {
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
+  min-height: var(--control-height-sm);
+  border-radius: 999px;
+}
+
+.deck-card-entry .remove-card {
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  font-size: 12px;
+  opacity: 1;
+}
+
+.saved-deck,
+.deck-stats div,
+.mana-curve {
+  border-color: var(--line);
+  background: var(--surface-2);
+}
+
+@media (max-width: 1180px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    min-height: auto;
+  }
+
+  .card-list,
+  .deck-list,
+  .saved-decks {
+    max-height: 520px;
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar,
+  .filters,
+  .sync-bar,
+  .deck-form,
+  .deck-code-form,
+  .builder-control-row,
+  .builder-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .topbar {
+    padding: 18px;
+  }
+
+  .app-shell {
+    width: calc(100% - 24px);
+    margin: 12px auto;
+  }
+
+  .deck-form select,
+  .builder-control-row select,
+  .mode-toggle {
+    max-width: none;
+  }
+
+  .builder-control-row #deckClass,
+  .builder-control-row #deckCodeInput {
+    flex-basis: auto;
+  }
+
+  .filters #cardSearch,
+  .filters #detailSearch {
+    flex: 0 0 auto;
+    min-height: 46px;
+  }
+
+  .card-list {
+    grid-template-columns: repeat(auto-fill, 86px);
+    gap: 6px;
+  }
+
+  .card-detail-modal {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    padding: 0;
+    place-items: stretch;
+  }
+
+  .card-detail-panel {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    overflow: auto;
+    padding: 18px;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .card-detail-image-frame img {
+    max-width: 230px;
+  }
+
+  .card-detail-content h2 {
+    margin-right: 36px;
+    font-size: 24px;
+  }
+
+  .card-patch-form {
+    grid-template-columns: 1fr;
+  }
+
+  .card-row {
+    width: 86px;
+  }
+
+  .art-frame {
+    min-width: 0;
+    height: auto;
+  }
+
+  .card-main strong {
+    font-size: 14px;
+  }
+
+  .card-main small {
+    font-size: 11px;
+  }
+
+  .deck-card-entry {
+    grid-template-columns: 217px 22px;
+    gap: 5px;
+    width: 244px;
+  }
+
+  .deck-tile-name {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 430px) {
+  .card-list {
+    grid-template-columns: repeat(3, 86px);
+    justify-content: start;
+  }
+}
+
+/* Card set compact layout refresh */
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+}
+
+body {
+  background: #ffffff;
+}
+
+.topbar {
+  width: min(calc(100% - 36px), 860px);
+  margin: 0 auto;
+  padding: 22px 0 10px;
+  border-bottom: 0;
+  background: #ffffff;
+  backdrop-filter: none;
+}
+
+.app-shell {
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 16px;
+  width: min(calc(100% - 36px), 860px);
+  margin: 18px auto;
+}
+
+.app-shell.card-set-page {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.panel {
+  min-height: auto;
+  border-color: var(--line);
+  border-radius: var(--radius-panel);
+  background: #ffffff;
+}
+
+.builder-controls-panel,
+.current-deck-panel {
+  background: #ffffff;
+}
+
+.cards-panel {
+  grid-column: 1 / -1;
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.search-block,
+.card-list-shell {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: #ffffff;
+}
+
+.search-block {
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.card-list-shell {
+  min-height: 560px;
+  padding: 18px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.filters #cardSearch {
+  flex: 1 1 auto;
+}
+
+.filters #detailSearch {
+  flex: 1 1 auto;
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 var(--control-height);
+  width: var(--control-height);
+  min-width: var(--control-height);
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.detail-search-panel {
+  margin-top: 10px;
+}
+
+.detail-search-panel[hidden] {
+  display: none;
+}
+
+.active-filter-chips {
+  margin: 10px 0 0;
+}
+
+.card-list {
+  grid-template-columns: repeat(auto-fill, 136px);
+  gap: 20px;
+  max-height: calc(100vh - 360px);
+  min-height: 520px;
+  padding: 0;
+}
+
+.card-row {
+  width: 136px;
+  border-radius: 0;
+}
+
+.art-frame {
+  width: 100%;
+  aspect-ratio: 367 / 512;
+  overflow: hidden;
+}
+
+.card-art {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.card-detail-info-panel,
+.card-patch-entry,
+.empty-patch-history {
+  background: #ffffff;
+}
+
+@media (max-width: 720px) {
+  .topbar,
+  .app-shell {
+    width: calc(100% - 24px);
+  }
+
+  .filters {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .filters #cardSearch,
+  .filters #detailSearch {
+    min-height: var(--control-height);
+  }
+
+  .search-block {
+    padding: 12px;
+  }
+
+  .card-list-shell {
+    min-height: 420px;
+    padding: 12px;
+  }
+
+  .card-list {
+    grid-template-columns: repeat(auto-fill, 106px);
+    gap: 10px;
+  }
+
+  .card-row {
+    width: 106px;
+  }
+}
+
+@media (max-width: 430px) {
+  .card-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+  }
+
+  .card-row {
+    width: 100%;
+  }
+}
+
+/* Deck builder tile-list layout */
+.deck-builder-page {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+.deck-builder-page .cards-panel {
+  grid-column: auto;
+}
+
+.deck-builder-page .cards-panel,
+.deck-builder-page .current-deck-panel {
+  display: flex;
+  flex-direction: column;
+  height: clamp(540px, calc(100vh - 230px), 760px);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.deck-builder-page .card-list-shell {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.deck-builder-page .card-list {
+  grid-template-columns: 217px;
+  align-content: start;
+  justify-content: center;
+  justify-items: center;
+  gap: 1px;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.deck-builder-page .card-pool-tile {
+  width: 217px;
+  height: 34px;
+}
+
+.deck-builder-page .deck-list {
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  justify-items: center;
+  gap: 1px;
+  overflow-y: auto;
+}
+
+.deck-builder-page .builder-actions {
+  flex: 0 0 auto;
+  margin-top: 12px;
+}
+
+@media (max-width: 720px) {
+  .deck-builder-page {
+    grid-template-columns: 1fr;
+  }
+
+  .deck-builder-page .cards-panel,
+  .deck-builder-page .current-deck-panel {
+    height: auto;
+  }
+
+  .deck-builder-page .card-list-shell {
+    height: 38vh;
+    min-height: 220px;
+    overflow: hidden;
+  }
+
+  .deck-builder-page .current-deck-panel {
+    height: 57vh;
+    min-height: 320px;
+    overflow: hidden;
+  }
+
+  .deck-builder-page .card-list {
+    grid-template-columns: 217px;
+  }
+
+  .deck-builder-page .card-pool-tile {
+    width: 217px;
+  }
+}
+
+/* Simplified builder toolbar */
+.builder-controls-panel {
+  padding: 16px 18px;
+}
+
+.builder-controls-panel .panel-head {
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.builder-controls-panel h2 {
+  line-height: 1.08;
+}
+
+.builder-controls-panel .panel-actions {
+  align-items: center;
+  gap: 8px;
+}
+
+.builder-controls-panel .pill {
+  min-height: 32px;
+  padding: 5px 10px;
+}
+
+.builder-control-row {
+  display: grid;
+  gap: 8px;
+}
+
+.builder-primary-row,
+.deck-code-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.builder-primary-row .mode-toggle {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+}
+
+.builder-primary-row .mode-button {
+  min-width: 72px;
+  padding-inline: 14px;
+}
+
+.builder-primary-row #deckClass {
+  flex: 1 1 150px;
+  max-width: none;
+}
+
+.builder-primary-row #syncDbButton,
+.deck-code-row #loadDeckCodeButton {
+  flex: 0 0 auto;
+  min-width: 88px;
+}
+
+.deck-code-row #deckCodeInput {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.builder-controls-panel input,
+.builder-controls-panel select,
+.builder-controls-panel button,
+.search-block input,
+.search-block button {
+  min-height: 38px;
+}
+
+.search-block {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 12px;
+  background: transparent;
+}
+
+.search-block .filters {
+  gap: 8px;
+}
+
+.search-block .icon-button {
+  flex-basis: 38px;
+  width: 38px;
+  min-width: 38px;
+}
+
+@media (max-width: 720px) {
+  .builder-controls-panel {
+    padding: 14px;
+  }
+
+  .builder-controls-panel .panel-head {
+    margin-bottom: 12px;
+  }
+
+  .builder-control-row {
+    gap: 8px;
+  }
+
+  .builder-primary-row,
+  .deck-code-row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .builder-primary-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .builder-primary-row .mode-button {
+    min-width: 64px;
+    padding-inline: 12px;
+  }
+
+  .builder-primary-row #deckClass,
+  .deck-code-row #deckCodeInput {
+    flex-basis: auto;
+  }
+
+  .builder-primary-row #syncDbButton,
+  .deck-code-row #loadDeckCodeButton {
+    min-width: 84px;
+    padding-inline: 12px;
+  }
+
+  .search-block {
+    padding: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  .builder-primary-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .builder-primary-row .mode-toggle {
+    grid-column: 1 / -1;
+  }
+
+  .builder-primary-row #deckClass {
+    min-width: 0;
+  }
+}
+
+/* Low-outline UI pass */
+.panel,
+.builder-controls-panel,
+.current-deck-panel,
+.card-list-shell,
+.card-detail-panel,
+.card-detail-info-panel,
+.card-patch-entry,
+.empty-patch-history {
+  border-color: #eef1f5;
+}
+
+.cards-panel {
+  border-color: transparent;
+}
+
+input,
+select,
+textarea,
+.ghost-button,
+.file-button,
+.mode-toggle,
+.pill,
+.active-filter-chip,
+.card-detail-tag,
+.patch-edit-button {
+  border-color: #eef1f5;
+  background-color: #ffffff;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.ghost-button:focus-visible,
+.file-button:focus-visible,
+.mode-button:focus-visible,
+.patch-edit-button:focus-visible {
+  border-color: #e5e9f0;
+  box-shadow: 0 0 0 3px #f3f5f8;
+}
+
+.ghost-button:hover,
+.ghost-button:focus-visible,
+.file-button:hover,
+.file-button:focus-visible,
+.patch-edit-button:hover,
+.patch-edit-button:focus-visible,
+.active-filter-chip button {
+  background-color: #f6f7f9;
+}
+
+.mode-toggle,
+.pill,
+.active-filter-chip,
+.card-detail-tag {
+  background-color: #f6f7f9;
+}
+
+.primary-button,
+.mode-button.is-active,
+.card-detail-modal .primary-button,
+#saveCardImageButton {
+  border-color: var(--button-positive);
+  background-color: var(--button-positive);
+}
+
+#clearDeckButton,
+#cancelPatchButton,
+.card-detail-close,
+.patch-delete-button,
+.remove-card,
+.deck-card-entry .remove-card {
+  border-color: var(--button-negative);
+  background-color: var(--button-negative);
+}
