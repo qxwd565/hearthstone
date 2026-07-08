@@ -1,0 +1,988 @@
+{
+  "metadata": {
+    "sets": [
+      {
+        "id": 1988,
+        "slug": "escape-from-violet-hold",
+        "name": "보랏빛 요새 탈출 작전"
+      },
+      {
+        "id": 1980,
+        "slug": "cataclysm",
+        "name": "대격변"
+      },
+      {
+        "id": 1957,
+        "slug": "across-the-timeways",
+        "name": "시간의 길 너머로"
+      },
+      {
+        "id": 1952,
+        "slug": "the-lost-city-of-ungoro",
+        "name": "운고로의 잃어버린 도시"
+      },
+      {
+        "id": 1946,
+        "slug": "into-the-emerald-dream",
+        "name": "에메랄드의 꿈 속으로"
+      },
+      {
+        "id": 1935,
+        "slug": "the-great-dark-beyond",
+        "name": "끝없는 어둠"
+      },
+      {
+        "id": 1905,
+        "slug": "perils-in-paradise",
+        "name": "극한의 극락"
+      },
+      {
+        "id": 1897,
+        "slug": "whizbangs-workshop",
+        "name": "위즈뱅의 장난감 공방"
+      },
+      {
+        "id": 1941,
+        "slug": "event",
+        "name": "이벤트"
+      },
+      {
+        "id": 1892,
+        "slug": "showdown-in-the-badlands",
+        "name": "황야의 땅 결투"
+      },
+      {
+        "id": 1858,
+        "slug": "titans",
+        "name": "티탄"
+      },
+      {
+        "id": 1809,
+        "slug": "festival-of-legends",
+        "name": "전설노래자랑"
+      },
+      {
+        "id": 1898,
+        "slug": "caverns-of-time",
+        "name": "시간의 동굴"
+      },
+      {
+        "id": 1776,
+        "slug": "march-of-the-lich-king",
+        "name": "리치 왕의 진군"
+      },
+      {
+        "id": 1869,
+        "slug": "path-of-arthas",
+        "name": "아서스의 길"
+      },
+      {
+        "id": 1691,
+        "slug": "murder-at-castle-nathria",
+        "name": "나스리아 성채 살인 사건"
+      },
+      {
+        "id": 1658,
+        "slug": "voyage-to-the-sunken-city",
+        "name": "가라앉은 도시로의 항해"
+      },
+      {
+        "id": 1626,
+        "slug": "fractured-in-alterac-valley",
+        "name": "알터랙 계곡"
+      },
+      {
+        "id": 1578,
+        "slug": "united-in-stormwind",
+        "name": "스톰윈드"
+      },
+      {
+        "id": 1525,
+        "slug": "forged-in-the-barrens",
+        "name": "불모의 땅"
+      },
+      {
+        "id": 1466,
+        "slug": "madness-at-the-darkmoon-faire",
+        "name": "광기의 다크문 축제"
+      },
+      {
+        "id": 1443,
+        "slug": "scholomance-academy",
+        "name": "스칼로맨스 아카데미"
+      },
+      {
+        "id": 1414,
+        "slug": "ashes-of-outland",
+        "name": "황폐한 아웃랜드"
+      },
+      {
+        "id": 1463,
+        "slug": "demonhunter-initiate",
+        "name": "수습 악마사냥꾼"
+      },
+      {
+        "id": 1403,
+        "slug": "galakronds-awakening",
+        "name": "갈라크론드의 부활"
+      },
+      {
+        "id": 1347,
+        "slug": "descent-of-dragons",
+        "name": "용의 강림"
+      },
+      {
+        "id": 1158,
+        "slug": "saviors-of-uldum",
+        "name": "울둠의 구원자"
+      },
+      {
+        "id": 1130,
+        "slug": "rise-of-shadows",
+        "name": "어둠의 반격"
+      },
+      {
+        "id": 1129,
+        "slug": "rastakhans-rumble",
+        "name": "라스타칸의 대난투"
+      },
+      {
+        "id": 1127,
+        "slug": "the-boomsday-project",
+        "name": "박사 붐의 폭심만만 프로젝트"
+      },
+      {
+        "id": 1125,
+        "slug": "the-witchwood",
+        "name": "마녀숲"
+      },
+      {
+        "id": 1004,
+        "slug": "kobolds-and-catacombs",
+        "name": "코볼트와 지하 미궁"
+      },
+      {
+        "id": 1001,
+        "slug": "knights-of-the-frozen-throne",
+        "name": "얼어붙은 왕좌의 기사들"
+      },
+      {
+        "id": 27,
+        "slug": "journey-to-ungoro",
+        "name": "운고로를 향한 여정"
+      },
+      {
+        "id": 25,
+        "slug": "mean-streets-of-gadgetzan",
+        "name": "비열한 거리의 가젯잔"
+      },
+      {
+        "id": 23,
+        "slug": "one-night-in-karazhan",
+        "name": "한여름 밤의 카라잔"
+      },
+      {
+        "id": 21,
+        "slug": "whispers-of-the-old-gods",
+        "name": "고대 신의 속삭임"
+      },
+      {
+        "id": 20,
+        "slug": "league-of-explorers",
+        "name": "탐험가 연맹"
+      },
+      {
+        "id": 15,
+        "slug": "the-grand-tournament",
+        "name": "대 마상시합"
+      },
+      {
+        "id": 14,
+        "slug": "blackrock-mountain",
+        "name": "검은바위 산"
+      },
+      {
+        "id": 13,
+        "slug": "goblins-vs-gnomes",
+        "name": "고블린 대 노움"
+      },
+      {
+        "id": 12,
+        "slug": "naxxramas",
+        "name": "낙스라마스의 저주"
+      },
+      {
+        "id": 1635,
+        "slug": "legacy",
+        "name": "고전"
+      },
+      {
+        "id": 1637,
+        "slug": "core",
+        "name": "핵심"
+      }
+    ],
+    "setGroups": [
+      {
+        "id": "scarab",
+        "slug": "scarab",
+        "name": "딱정벌레의 해 "
+      },
+      {
+        "id": "raptor",
+        "slug": "raptor",
+        "name": "랩터의 해"
+      },
+      {
+        "id": "Pegasus",
+        "slug": "Pegasus",
+        "name": "페가수스의 해"
+      },
+      {
+        "id": "Wolf",
+        "slug": "Wolf",
+        "name": "늑대의 해"
+      },
+      {
+        "id": "hydra",
+        "slug": "hydra",
+        "name": "히드라의 해"
+      },
+      {
+        "id": "gryphon",
+        "slug": "gryphon",
+        "name": "그리핀의 해"
+      },
+      {
+        "id": "phoenix",
+        "slug": "phoenix",
+        "name": "불사조의 해"
+      },
+      {
+        "id": "dragon",
+        "slug": "dragon",
+        "name": "용의 해"
+      },
+      {
+        "id": "raven",
+        "slug": "raven",
+        "name": "까마귀의 해"
+      },
+      {
+        "id": "mammoth",
+        "slug": "mammoth",
+        "name": "매머드의 해"
+      },
+      {
+        "id": "kraken",
+        "slug": "kraken",
+        "name": "크라켄의 해"
+      },
+      {
+        "id": "classic",
+        "slug": "classic",
+        "name": "정규력 이전"
+      },
+      {
+        "id": "standard",
+        "slug": "standard",
+        "name": "정규 세트"
+      },
+      {
+        "id": "wild",
+        "slug": "wild",
+        "name": "야생 카드"
+      }
+    ],
+    "types": [
+      {
+        "id": 3,
+        "slug": "hero",
+        "name": "영웅"
+      },
+      {
+        "id": 4,
+        "slug": "minion",
+        "name": "하수인"
+      },
+      {
+        "id": 5,
+        "slug": "spell",
+        "name": "주문"
+      },
+      {
+        "id": 7,
+        "slug": "weapon",
+        "name": "무기"
+      },
+      {
+        "id": 10,
+        "slug": "hero power",
+        "name": "영웅 능력"
+      },
+      {
+        "id": 39,
+        "slug": "location",
+        "name": "장소"
+      },
+      {
+        "id": 40,
+        "slug": "baconquestreward",
+        "name": "보상"
+      },
+      {
+        "id": 44,
+        "slug": "trinket",
+        "name": "장신구"
+      },
+      {
+        "id": 999,
+        "slug": "timewarp",
+        "name": "시간왜곡"
+      }
+    ],
+    "rarities": [
+      {
+        "id": 1,
+        "slug": "common",
+        "name": "일반"
+      },
+      {
+        "id": 2,
+        "slug": "free",
+        "name": "무료"
+      },
+      {
+        "id": 3,
+        "slug": "rare",
+        "name": "희귀"
+      },
+      {
+        "id": 4,
+        "slug": "epic",
+        "name": "특급"
+      },
+      {
+        "id": 5,
+        "slug": "legendary",
+        "name": "전설"
+      }
+    ],
+    "classes": [
+      {
+        "id": 1,
+        "slug": "deathknight",
+        "name": "죽음의 기사"
+      },
+      {
+        "id": 14,
+        "slug": "demonhunter",
+        "name": "악마사냥꾼"
+      },
+      {
+        "id": 2,
+        "slug": "druid",
+        "name": "드루이드"
+      },
+      {
+        "id": 3,
+        "slug": "hunter",
+        "name": "사냥꾼"
+      },
+      {
+        "id": 4,
+        "slug": "mage",
+        "name": "마법사"
+      },
+      {
+        "id": 5,
+        "slug": "paladin",
+        "name": "성기사"
+      },
+      {
+        "id": 6,
+        "slug": "priest",
+        "name": "사제"
+      },
+      {
+        "id": 7,
+        "slug": "rogue",
+        "name": "도적"
+      },
+      {
+        "id": 8,
+        "slug": "shaman",
+        "name": "주술사"
+      },
+      {
+        "id": 9,
+        "slug": "warlock",
+        "name": "흑마법사"
+      },
+      {
+        "id": 10,
+        "slug": "warrior",
+        "name": "전사"
+      },
+      {
+        "id": 12,
+        "slug": "neutral",
+        "name": "중립"
+      }
+    ],
+    "minionTypes": [
+      {
+        "id": 1,
+        "slug": "bloodelf",
+        "name": "블러드 엘프"
+      },
+      {
+        "id": 2,
+        "slug": "draenei",
+        "name": "드레나이"
+      },
+      {
+        "id": 3,
+        "slug": "dwarf",
+        "name": "드워프"
+      },
+      {
+        "id": 4,
+        "slug": "gnome",
+        "name": "노움"
+      },
+      {
+        "id": 6,
+        "slug": "human",
+        "name": "인간"
+      },
+      {
+        "id": 7,
+        "slug": "nightelf",
+        "name": "나이트 엘프"
+      },
+      {
+        "id": 8,
+        "slug": "orc",
+        "name": "오크"
+      },
+      {
+        "id": 9,
+        "slug": "tauren",
+        "name": "타우렌"
+      },
+      {
+        "id": 10,
+        "slug": "troll",
+        "name": "트롤"
+      },
+      {
+        "id": 11,
+        "slug": "undead",
+        "name": "언데드"
+      },
+      {
+        "id": 14,
+        "slug": "murloc",
+        "name": "멀록"
+      },
+      {
+        "id": 15,
+        "slug": "demon",
+        "name": "악마"
+      },
+      {
+        "id": 17,
+        "slug": "mech",
+        "name": "기계"
+      },
+      {
+        "id": 18,
+        "slug": "elemental",
+        "name": "정령"
+      },
+      {
+        "id": 20,
+        "slug": "beast",
+        "name": "야수"
+      },
+      {
+        "id": 21,
+        "slug": "totem",
+        "name": "토템"
+      },
+      {
+        "id": 23,
+        "slug": "pirate",
+        "name": "해적"
+      },
+      {
+        "id": 24,
+        "slug": "dragon",
+        "name": "용족"
+      },
+      {
+        "id": 26,
+        "slug": "all",
+        "name": "모두"
+      },
+      {
+        "id": 43,
+        "slug": "quilboar",
+        "name": "가시멧돼지"
+      },
+      {
+        "id": 88,
+        "slug": "halforc",
+        "name": "반오크"
+      },
+      {
+        "id": 92,
+        "slug": "naga",
+        "name": "나가"
+      },
+      {
+        "id": 93,
+        "slug": "oldgod",
+        "name": "고대 신"
+      },
+      {
+        "id": 94,
+        "slug": "pandaren",
+        "name": "판다렌"
+      },
+      {
+        "id": 95,
+        "slug": "gronn",
+        "name": "그론"
+      }
+    ],
+    "spellSchools": [
+      {
+        "id": 1,
+        "slug": "arcane",
+        "name": "비전"
+      },
+      {
+        "id": 2,
+        "slug": "fire",
+        "name": "화염"
+      },
+      {
+        "id": 3,
+        "slug": "frost",
+        "name": "냉기"
+      },
+      {
+        "id": 4,
+        "slug": "nature",
+        "name": "자연"
+      },
+      {
+        "id": 5,
+        "slug": "holy",
+        "name": "신성"
+      },
+      {
+        "id": 6,
+        "slug": "shadow",
+        "name": "암흑"
+      },
+      {
+        "id": 7,
+        "slug": "fel",
+        "name": "지옥"
+      },
+      {
+        "id": 11,
+        "slug": "lesser_trinket",
+        "name": "하급"
+      },
+      {
+        "id": 12,
+        "slug": "greater_trinket",
+        "name": "상급"
+      }
+    ],
+    "keywords": [
+      {
+        "id": 1,
+        "slug": "taunt\n",
+        "name": "도발"
+      },
+      {
+        "id": 2,
+        "slug": "spell-damage\n",
+        "name": "주문 공격력"
+      },
+      {
+        "id": 3,
+        "slug": "divine-shield",
+        "name": "천상의 보호막"
+      },
+      {
+        "id": 4,
+        "slug": "charge",
+        "name": "돌진"
+      },
+      {
+        "id": 5,
+        "slug": "secret\n",
+        "name": "비밀"
+      },
+      {
+        "id": 6,
+        "slug": "stealth\n",
+        "name": "은신"
+      },
+      {
+        "id": 8,
+        "slug": "battlecry\n",
+        "name": "전투의 함성"
+      },
+      {
+        "id": 10,
+        "slug": "freeze\n",
+        "name": "빙결"
+      },
+      {
+        "id": 11,
+        "slug": "windfury\n",
+        "name": "질풍"
+      },
+      {
+        "id": 12,
+        "slug": "deathrattle\n",
+        "name": "죽음의 메아리"
+      },
+      {
+        "id": 13,
+        "slug": "combo\n",
+        "name": "연계"
+      },
+      {
+        "id": 14,
+        "slug": "overload:-x\n",
+        "name": "과부하: X"
+      },
+      {
+        "id": 15,
+        "slug": "silence\n",
+        "name": "침묵"
+      },
+      {
+        "id": 16,
+        "slug": "counter\n",
+        "name": "차단"
+      },
+      {
+        "id": 17,
+        "slug": "immune",
+        "name": "면역"
+      },
+      {
+        "id": 19,
+        "slug": "spare-parts\n",
+        "name": "예비 부품"
+      },
+      {
+        "id": 20,
+        "slug": "inspire\n",
+        "name": "격려"
+      },
+      {
+        "id": 21,
+        "slug": "discover\n",
+        "name": "발견"
+      },
+      {
+        "id": 31,
+        "slug": "quest\n",
+        "name": "퀘스트"
+      },
+      {
+        "id": 32,
+        "slug": "poisonous\n",
+        "name": "독성"
+      },
+      {
+        "id": 34,
+        "slug": "adapt\n",
+        "name": "적응"
+      },
+      {
+        "id": 38,
+        "slug": "lifesteal\n",
+        "name": "생명력 흡수"
+      },
+      {
+        "id": 39,
+        "slug": "recruit\n",
+        "name": "소집"
+      },
+      {
+        "id": 52,
+        "slug": "echo\n",
+        "name": "잔상"
+      },
+      {
+        "id": 53,
+        "slug": "rush\n",
+        "name": "속공"
+      },
+      {
+        "id": 61,
+        "slug": "overkill\n",
+        "name": "압살"
+      },
+      {
+        "id": 64,
+        "slug": "start-of-game\n",
+        "name": "개전"
+      },
+      {
+        "id": 66,
+        "slug": "magnetic\n",
+        "name": "합체"
+      },
+      {
+        "id": 71,
+        "slug": "lackey\n",
+        "name": "졸개"
+      },
+      {
+        "id": 76,
+        "slug": "twinspell\n",
+        "name": "이중 주문"
+      },
+      {
+        "id": 77,
+        "slug": "mega-windfury\n",
+        "name": "광풍"
+      },
+      {
+        "id": 78,
+        "slug": "reborn\n",
+        "name": "환생"
+      },
+      {
+        "id": 79,
+        "slug": "invoke\n",
+        "name": "기원"
+      },
+      {
+        "id": 86,
+        "slug": "outcast\n",
+        "name": "추방자"
+      },
+      {
+        "id": 88,
+        "slug": "spellburst\n",
+        "name": "주문폭주"
+      },
+      {
+        "id": 89,
+        "slug": "sidequest\n",
+        "name": "부가 퀘스트"
+      },
+      {
+        "id": 91,
+        "slug": "corrupt\n",
+        "name": "타락"
+      },
+      {
+        "id": 96,
+        "slug": "questline\n",
+        "name": "퀘스트 전개"
+      },
+      {
+        "id": 97,
+        "slug": "tradeable\n",
+        "name": "교환성"
+      },
+      {
+        "id": 99,
+        "slug": "frenzy\n",
+        "name": "광폭"
+      },
+      {
+        "id": 100,
+        "slug": "honorable-kill\n",
+        "name": "명예로운 일격"
+      },
+      {
+        "id": 104,
+        "slug": "nature-spell-damage\n",
+        "name": "자연 주문 공격력"
+      },
+      {
+        "id": 109,
+        "slug": "blood-gem\n",
+        "name": "혈석"
+      },
+      {
+        "id": 196,
+        "slug": "refresh\n",
+        "name": "새로고침"
+      },
+      {
+        "id": 198,
+        "slug": "avenge-(x)\n",
+        "name": "복수 (X)"
+      },
+      {
+        "id": 231,
+        "slug": "colossal-+x\n",
+        "name": "거수 +X"
+      },
+      {
+        "id": 232,
+        "slug": "dredge\n",
+        "name": "인양"
+      },
+      {
+        "id": 234,
+        "slug": "spellcraft\n",
+        "name": "주문제작"
+      },
+      {
+        "id": 238,
+        "slug": "infuse\n",
+        "name": "주입"
+      },
+      {
+        "id": 247,
+        "slug": "corpse\n",
+        "name": "시체"
+      },
+      {
+        "id": 255,
+        "slug": "finale\n",
+        "name": "피날레"
+      },
+      {
+        "id": 256,
+        "slug": "overheal\n",
+        "name": "초과 치유"
+      },
+      {
+        "id": 257,
+        "slug": "manathirst-(x)\n",
+        "name": "마나갈증 (X)"
+      },
+      {
+        "id": 261,
+        "slug": "venomous\n",
+        "name": "독소"
+      },
+      {
+        "id": 265,
+        "slug": "elusive",
+        "name": "모면"
+      },
+      {
+        "id": 266,
+        "slug": "forge\t\t\n",
+        "name": "제련"
+      },
+      {
+        "id": 270,
+        "slug": "titan\n",
+        "name": "티탄"
+      },
+      {
+        "id": 294,
+        "slug": "miniaturize",
+        "name": "미니미"
+      },
+      {
+        "id": 295,
+        "slug": "mini",
+        "name": "미니"
+      },
+      {
+        "id": 297,
+        "slug": "quickdraw\n",
+        "name": "빨리 뽑기"
+      },
+      {
+        "id": 298,
+        "slug": "excavate\n",
+        "name": "발굴"
+      },
+      {
+        "id": 300,
+        "slug": "pass",
+        "name": "전달"
+      },
+      {
+        "id": 303,
+        "slug": "buddy",
+        "name": "전우"
+      },
+      {
+        "id": 318,
+        "slug": "imbue",
+        "name": "연마"
+      },
+      {
+        "id": 319,
+        "slug": "dark-gift",
+        "name": "어둠의 선물"
+      },
+      {
+        "id": 320,
+        "slug": "temporary",
+        "name": "일시적"
+      },
+      {
+        "id": 323,
+        "slug": "starship",
+        "name": "우주선"
+      },
+      {
+        "id": 344,
+        "slug": "rewind",
+        "name": "되돌리기"
+      },
+      {
+        "id": 351,
+        "slug": "kindred",
+        "name": "유사"
+      },
+      {
+        "id": 356,
+        "slug": "fabled",
+        "name": "설화"
+      },
+      {
+        "id": 357,
+        "slug": "fabled+",
+        "name": "설화+"
+      },
+      {
+        "id": 360,
+        "slug": "rally",
+        "name": "집결"
+      },
+      {
+        "id": 378,
+        "slug": "herald",
+        "name": "예고"
+      },
+      {
+        "id": 382,
+        "slug": "prepare",
+        "name": "준비"
+      }
+    ]
+  },
+  "meta": {
+    "source": "blizzard-hearthstone-api",
+    "region": "kr",
+    "locale": "ko_KR",
+    "dbVersion": "2101b992acd2e16e345904235f6a1996310491b99f5a72a4ea0e259dff9f6cc3",
+    "checkedAt": "2026-07-08T10:40:09.163Z",
+    "syncedAt": "2026-07-08T10:40:09.163Z"
+  }
+}
