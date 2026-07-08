@@ -250,6 +250,16 @@ textarea {
   white-space: nowrap;
 }
 
+.is-file-mode .sync-bar {
+  position: static;
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+}
+
 .sync-bar select {
   max-width: 118px;
 }

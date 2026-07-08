@@ -57,6 +57,8 @@ const state = {
   pendingCardSlug: cardSlugFromLocation(),
 };
 
+const isFileMode = window.location.protocol === "file:";
+if (isFileMode) document.body.classList.add("is-file-mode");
 let isSyncingCards = false;
 let shouldSyncCardsAgain = false;
 let isCheckingDbVersion = false;
@@ -207,6 +209,19 @@ const elements = {
   saveCardImageButton: $("#saveCardImageButton"),
   modalDeckBuilderButton: $("#modalDeckBuilderButton"),
 };
+
+function disableServerOnlyControls() {
+  [
+    elements.syncDbButton,
+    elements.loadDeckCodeButton,
+    elements.exportPngButton,
+    elements.addPatchButton,
+    elements.submitPatchButton,
+    elements.saveCardImageButton,
+  ].forEach((element) => {
+    if (element) element.disabled = true;
+  });
+}
 
 function loadCards() {
   try {
@@ -1173,6 +1188,11 @@ async function downloadRemoteImage(source, fileName) {
 }
 
 async function downloadActiveCardImage() {
+  if (isFileMode) {
+    setPatchStatus("HTML 파일로 직접 열면 이미지 저장은 로컬 서버에서만 동작합니다.");
+    return;
+  }
+
   const card = cardById(state.activeDetailCardId);
   if (!card) return;
   const button = elements.saveCardImageButton;
@@ -1220,6 +1240,11 @@ async function waitForDeckFonts() {
 }
 
 async function exportDeckPng() {
+  if (isFileMode) {
+    elements.deckCodeStatus.textContent = "HTML 파일로 직접 열면 PNG 저장은 로컬 서버에서만 동작합니다.";
+    return;
+  }
+
   const groups = currentDeckGroups();
   if (!groups.length) {
     elements.deckCodeStatus.textContent = "PNG로 저장할 카드가 없습니다.";
@@ -1315,6 +1340,12 @@ function apiConfig() {
 }
 
 async function syncCards() {
+  if (isFileMode) {
+    elements.syncStatus.textContent = "HTML 파일로 직접 열면 DB 최신화는 로컬 서버에서만 동작합니다.";
+    setCardLoading(false);
+    return;
+  }
+
   if (isSyncingCards) {
     shouldSyncCardsAgain = true;
     return;
@@ -1358,6 +1389,8 @@ async function syncCards() {
 }
 
 async function syncCardsForMode(mode, { applyToUi = true } = {}) {
+  if (isFileMode) return null;
+
   const targetMode = normalizeDeckMode(mode);
   const query = new URLSearchParams({
     region: "kr",
@@ -1409,6 +1442,11 @@ async function syncAllModesForVersionChange() {
 }
 
 async function loadCardSnapshot() {
+  if (isFileMode) {
+    renderSyncStatus();
+    return;
+  }
+
   const config = apiConfig();
   const query = new URLSearchParams(config);
   const metadataQuery = new URLSearchParams({
@@ -1499,6 +1537,11 @@ function normalizedPatchEntries(card) {
 
 async function savePatchEntry(event) {
   event.preventDefault();
+  if (isFileMode) {
+    setPatchStatus("HTML 파일로 직접 열면 패치내역 저장은 로컬 서버에서만 동작합니다.");
+    return;
+  }
+
   const card = cardById(state.activeDetailCardId);
   if (!card) return;
 
@@ -1533,6 +1576,11 @@ async function savePatchEntry(event) {
 }
 
 async function deletePatchEntry(index) {
+  if (isFileMode) {
+    setPatchStatus("HTML 파일로 직접 열면 패치내역 삭제는 로컬 서버에서만 동작합니다.");
+    return;
+  }
+
   const card = cardById(state.activeDetailCardId);
   if (!card) return;
 
@@ -1573,6 +1621,11 @@ function closePatchEdit() {
 
 async function savePatchEdit(event) {
   event.preventDefault();
+  if (isFileMode) {
+    setPatchStatus("HTML 파일로 직접 열면 패치내역 수정은 로컬 서버에서만 동작합니다.");
+    return;
+  }
+
   const form = event.target;
   if (!(form instanceof HTMLFormElement)) return;
   const card = cardById(state.activeDetailCardId);
@@ -1691,6 +1744,8 @@ function handleLocationChange() {
 }
 
 async function checkDbVersionAndMaybeSync() {
+  if (isFileMode) return;
+
   if (isCheckingDbVersion || isSyncingCards) return;
   isCheckingDbVersion = true;
 
@@ -1723,6 +1778,11 @@ function inferDeckClass(cardIds, fallback = "") {
 }
 
 async function loadDeckCode() {
+  if (isFileMode) {
+    elements.deckCodeStatus.textContent = "HTML 파일로 직접 열면 덱 코드 불러오기는 로컬 서버에서만 동작합니다.";
+    return;
+  }
+
   const code = elements.deckCodeInput.value.trim();
   if (!code) {
     elements.deckCodeStatus.textContent = "덱 코드를 입력하세요.";
@@ -1768,6 +1828,14 @@ async function loadDeckCode() {
 }
 
 function renderSyncStatus() {
+  if (isFileMode) {
+    elements.syncStatus.textContent = state.cards.length
+      ? "HTML 파일로 직접 여는 중입니다. API 기능은 로컬 서버에서만 동작합니다."
+      : "HTML 파일로 직접 열면 API 기능은 로컬 서버에서만 동작합니다. 스타일 확인은 가능하지만 카드 DB는 localhost에서 확인해 주세요.";
+    setCardLoading(false);
+    return;
+  }
+
   if (!state.cards.length) {
     elements.syncStatus.textContent = "저장된 카드 DB 불러오는 중...";
     setCardLoading(true);
@@ -1794,6 +1862,15 @@ function renderSyncStatus() {
 }
 
 function loadCardsOnStart() {
+  if (isFileMode) {
+    disableServerOnlyControls();
+    populateSelects();
+    renderSyncStatus();
+    renderAll();
+    openPendingCardFromPath();
+    return;
+  }
+
   window.setTimeout(() => {
     Promise.all([loadCardPatches(), loadSetReleaseDates(), loadHearthstoneYears(), loadCardSnapshot()]).then(() => {
       openPendingCardFromPath();
