@@ -1485,45 +1485,33 @@ async function loadCardSnapshot() {
   }
 }
 
-async function loadCardPatches() {
+function applyCardHistory(payload) {
+  const history = payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
+  state.cardPatches =
+    history.cardPatches && typeof history.cardPatches === "object" && !Array.isArray(history.cardPatches) ? history.cardPatches : {};
+  state.setReleaseDates =
+    history.setReleaseDates && typeof history.setReleaseDates === "object" && !Array.isArray(history.setReleaseDates)
+      ? history.setReleaseDates
+      : {};
+  state.hearthstoneYears =
+    history.hearthstoneYears && typeof history.hearthstoneYears === "object" && !Array.isArray(history.hearthstoneYears)
+      ? history.hearthstoneYears
+      : {};
+}
+
+async function loadCardHistory() {
   try {
-    const response = await fetch("/api/card-patches");
+    let response = await fetch("/api/card-history");
+    if (!response.ok) response = await fetch("./data/card-history.json", { cache: "no-store" });
     const payload = await response.json();
-    state.cardPatches = response.ok && payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
+    if (response.ok) applyCardHistory(payload);
     if (state.activeDetailCardId) {
       const activeCard = cardById(state.activeDetailCardId);
       if (activeCard) renderCardPatches(activeCard);
     }
   } catch {
     state.cardPatches = {};
-  }
-}
-
-async function loadSetReleaseDates() {
-  try {
-    let response = await fetch("/api/set-release-dates");
-    if (!response.ok) response = await fetch("/data/set-release-dates.json");
-    const payload = await response.json();
-    state.setReleaseDates = response.ok && payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
-    if (state.activeDetailCardId) {
-      const activeCard = cardById(state.activeDetailCardId);
-      if (activeCard) renderCardPatches(activeCard);
-    }
-  } catch {
     state.setReleaseDates = {};
-  }
-}
-
-async function loadHearthstoneYears() {
-  try {
-    const response = await fetch("/data/hearthstone-years.json", { cache: "no-store" });
-    const payload = await response.json();
-    state.hearthstoneYears = response.ok && payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
-    if (state.activeDetailCardId) {
-      const activeCard = cardById(state.activeDetailCardId);
-      if (activeCard) renderCardPatches(activeCard);
-    }
-  } catch {
     state.hearthstoneYears = {};
   }
 }
@@ -1872,7 +1860,7 @@ function loadCardsOnStart() {
   }
 
   window.setTimeout(() => {
-    Promise.all([loadCardPatches(), loadSetReleaseDates(), loadHearthstoneYears(), loadCardSnapshot()]).then(() => {
+    Promise.all([loadCardHistory(), loadCardSnapshot()]).then(() => {
       openPendingCardFromPath();
       checkDbVersionAndMaybeSync();
     });

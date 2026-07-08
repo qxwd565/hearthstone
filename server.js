@@ -7,8 +7,7 @@ const { extname, join, normalize } = require("node:path");
 const root = __dirname;
 const dataDir = join(root, "data");
 const metadataSnapshotPath = join(dataDir, "metadata.json");
-const cardPatchesPath = join(dataDir, "card-patches.json");
-const setReleaseDatesPath = join(dataDir, "set-release-dates.json");
+const cardHistoryPath = join(dataDir, "card-history.json");
 
 loadDotEnv();
 
@@ -306,12 +305,36 @@ function normalizePatchStore(value) {
   return value && typeof value === "object" && !Array.isArray(value) ? value : {};
 }
 
-async function readCardPatchStore() {
+function normalizeCardHistory(value) {
+  const history = value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  return {
+    hearthstoneYears: normalizePatchStore(history.hearthstoneYears),
+    setReleaseDates: normalizePatchStore(history.setReleaseDates),
+    cardPatches: normalizePatchStore(history.cardPatches),
+  };
+}
+
+async function readCardHistory() {
   try {
-    return normalizePatchStore(await readJsonFile(cardPatchesPath));
+    return normalizeCardHistory(await readJsonFile(cardHistoryPath));
   } catch {
-    return {};
+    return normalizeCardHistory({});
   }
+}
+
+async function writeCardHistory(history) {
+  await writeJsonFile(cardHistoryPath, normalizeCardHistory(history));
+}
+
+async function readCardPatchStore() {
+  const history = await readCardHistory();
+  return history.cardPatches;
+}
+
+async function writeCardPatchStore(cardPatches) {
+  const history = await readCardHistory();
+  history.cardPatches = normalizePatchStore(cardPatches);
+  await writeCardHistory(history);
 }
 
 function normalizePatchEntry(entry) {
@@ -501,11 +524,17 @@ async function fetchMetadata(request, response) {
 }
 
 async function fetchSetReleaseDates(request, response) {
-  try {
-    sendJson(response, 200, await readJsonFile(setReleaseDatesPath));
-  } catch {
-    sendJson(response, 200, {});
+  const history = await readCardHistory();
+  sendJson(response, 200, history.setReleaseDates);
+}
+
+async function fetchCardHistory(request, response) {
+  if (request.method !== "GET") {
+    apiError(response, 405, "GET ?붿껌留?吏?먰빀?덈떎.");
+    return;
   }
+
+  sendJson(response, 200, await readCardHistory());
 }
 
 async function fetchCardPatches(request, response) {
@@ -531,7 +560,7 @@ async function fetchCardPatches(request, response) {
       const patches = await readCardPatchStore();
       const entries = Array.isArray(patches[cardKey]) ? patches[cardKey] : [];
       patches[cardKey] = [...entries, entry];
-      await writeJsonFile(cardPatchesPath, patches);
+      await writeCardPatchStore(patches);
       sendJson(response, 200, { cardKey, entries: patches[cardKey] });
       return;
     }
@@ -569,7 +598,7 @@ async function fetchCardPatches(request, response) {
         ...updates,
       };
       patches[cardKey] = entries.map((entry, entryIndex) => (entryIndex === index ? nextEntry : normalizePatchEntry(entry)));
-      await writeJsonFile(cardPatchesPath, patches);
+      await writeCardPatchStore(patches);
       sendJson(response, 200, { cardKey, entries: patches[cardKey] });
       return;
     }
@@ -592,7 +621,7 @@ async function fetchCardPatches(request, response) {
 
       patches[cardKey] = entries.filter((_, entryIndex) => entryIndex !== index);
       if (!patches[cardKey].length) delete patches[cardKey];
-      await writeJsonFile(cardPatchesPath, patches);
+      await writeCardPatchStore(patches);
       sendJson(response, 200, { cardKey, entries: patches[cardKey] || [] });
       return;
     }
@@ -723,6 +752,11 @@ createServer((request, response) => {
 
   if (request.url.startsWith("/api/card-patches")) {
     fetchCardPatches(request, response);
+    return;
+  }
+
+  if (request.url.startsWith("/api/card-history")) {
+    fetchCardHistory(request, response);
     return;
   }
 
